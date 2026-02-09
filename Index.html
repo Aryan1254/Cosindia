@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COS India</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Hamburger Icon */
+.menu-icon {
+    font-size: 26px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* Sidebar Menu */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    padding-top: 60px;
+    transition: 0.3s;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.sidebar a:hover {
+    background: #f1f1f1;
+}
+
+/* Sections */
+section {
+    padding: 60px 20px;
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+  .products {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+}
+
+.card p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+  
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <h1>COS India</h1>
+</header>
+
+<div class="sidebar" id="sidebar">
+    <a onclick="showSection('home'); toggleMenu()">Home</a>
+    <a onclick="showSection('products'); toggleMenu()">Products</a>
+    <a onclick="showSection('about'); toggleMenu()">About</a>
+    <a onclick="showSection('contact'); toggleMenu()">Contact</a>
+    <a onclick="showSection('cart'); toggleMenu()">Cart</a>
+</div>
+
+<section id="home" class="active">
+    <div class="hero">
+        <h2>Welcome to COS India</h2>
+        <p>Minimal. Premium. Everyday Essentials.</p>
+        <button class="btn" onclick="showSection('products')">Shop Now</button>
+    </div>
+</section>
+
+<section id="products">
+    <h2>Products</h2>
+  <div class="products">
+    <div class="card">
+        <img src="images/cosx.jpg" width="100%">
+        <h3>Product 1</h3>
+        <p>₹499</p>
+        <button class="btn" onclick="addToCart('Product 1')">Add to Cart</button>
+        <button class="btn" onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="card">
+        <img src="images/cosx.jpg" width="100%">
+        <h3>Product 2</h3>
+        <p>₹799</p>
+        <button class="btn" onclick="addToCart('Product 2')">Add to Cart</button>
+        <button class="btn" onclick="buyNow()">Buy Now</button>
+    </div>
+</div>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>COS India is built on simplicity and quality.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: support@cosindia.com</p>
+</section>
+
+<section id="cart">
+    <h2>Your Cart</h2>
+    <p>Cart items will appear here.</p>
+</section>
+
+<script>
+function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px";
+    } else {
+        sidebar.style.left = "0px";
+    }
+}
+
+function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => {
+        sec.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+}
+    let cart = [];
+
+function addToCart(product) {
+    cart.push(product);
+    alert(product + " added to cart!");
+}
+
+function buyNow() {
+    alert("Proceeding to payment...");
+}
+    
+</script>
+
+</body>
+                   </html>
